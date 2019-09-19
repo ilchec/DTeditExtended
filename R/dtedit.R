@@ -172,7 +172,8 @@ dtedit <- function(input, output, name, thedata,
 
 	output[[DataTableName]] <- DT::renderDataTable({
 		thedata[,view.cols]
-	}, extensions = c('Buttons', 'Scroller'),
+	}, callback = "function(oTable) {buttons: [
+        'copy', 'excel', 'csv', 'pdf']}",
 	   options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
 
 	getFields <- function(typeName, values) {
