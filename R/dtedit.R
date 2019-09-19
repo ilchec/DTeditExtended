@@ -172,7 +172,7 @@ dtedit <- function(input, output, name, thedata,
 
 	output[[DataTableName]] <- DT::renderDataTable({
 		thedata[,view.cols]
-	}, extensions = c('Buttons', 'ColReorder'), options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
+	}, extensions = 'Buttons', options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
 
 	getFields <- function(typeName, values) {
 		fields <- list()
