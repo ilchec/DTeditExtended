@@ -111,8 +111,7 @@ dtedit <- function(input, output, name, thedata,
 				   callback.update = function(data, olddata, row) { },
 				   callback.insert = function(data, row) { },
 				   click.time.threshold = 2, # in seconds
-				   datatable.options = list(pageLength=defaultPageLength),
-		   		   datatable.extensions = list()
+				   datatable.options = list(pageLength=defaultPageLength)
 		   
 ) {
 	# Some basic parameter checking
@@ -173,7 +172,7 @@ dtedit <- function(input, output, name, thedata,
 
 	output[[DataTableName]] <- DT::renderDataTable({
 		thedata[,view.cols]
-	}, extensions = datatable.extensions, options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
+	}, extensions = c('Buttons', 'ColReorder'), options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
 
 	getFields <- function(typeName, values) {
 		fields <- list()
