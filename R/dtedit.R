@@ -111,7 +111,9 @@ dtedit <- function(input, output, name, thedata,
 				   callback.update = function(data, olddata, row) { },
 				   callback.insert = function(data, row) { },
 				   click.time.threshold = 2, # in seconds
-				   datatable.options = list(pageLength=defaultPageLength)
+				   datatable.options = list(pageLength=defaultPageLength),
+		   		   datatable.extensions = list()
+		   
 ) {
 	# Some basic parameter checking
 	if(!is.data.frame(thedata) | ncol(thedata) < 1) {
@@ -171,7 +173,7 @@ dtedit <- function(input, output, name, thedata,
 
 	output[[DataTableName]] <- DT::renderDataTable({
 		thedata[,view.cols]
-	}, options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
+	}, extensions = datatable.extensions, options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
 
 	getFields <- function(typeName, values) {
 		fields <- list()
